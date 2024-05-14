@@ -20,11 +20,12 @@ public class App {
                 completar(arreglo3, sc);
                 metodo3(arreglo3);
             } else if (opcion2.equals("L")) {
-
-                break;
+                arreglo3 = anadir(arreglo3, sc);
+                metodo3(arreglo3);
             } else if (opcion2.equals("P")) {
+                arreglo3 = eliminar(arreglo3, sc);
+                metodo3(arreglo3);
 
-                break;
             } else if (opcion2.equals("X")) {
                 descompletar(arreglo3, sc);
                 metodo3(arreglo3);
@@ -127,6 +128,7 @@ public class App {
             try {
                 System.out.println("Dijite el número de la tarea a completar:");
                 int tarea = sc.nextInt();
+                sc.nextLine();
                 if (tarea >= 1 && tarea <= arreglo.length) {
                     arreglo[tarea - 1][1] = "1";
                     System.out.println("Tarea completada: " + arreglo[tarea - 1][0]);
@@ -162,5 +164,49 @@ public class App {
                 sc.nextLine();
             }
         }
+    }
+
+    public static String[][] eliminar(String[][] arreglo, Scanner sc) {
+        while (true) {
+            try {
+                System.out.println("Dijite la tarea a eliminar.");
+                sc.nextLine();
+                int tareaeliminar = sc.nextInt();
+                if (tareaeliminar >= 1 && tareaeliminar <= arreglo.length) {
+                    String[][] temp = new String[arreglo.length - 1][2];
+                    int o = 0;
+                    for (int i = 0; i < arreglo.length; i++) {
+                        if (i + 1 == tareaeliminar) {
+                            continue;
+                        }
+                        for (int j = 0; j < arreglo[i].length; j++) {
+                            temp[o][j] = arreglo[i][j];
+                        }
+                        o++;
+                    }
+                    arreglo = temp;
+                    return arreglo;
+                } else {
+                    System.out.println("Ingrese num valido.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Ingrese una opcion valida.");
+                sc.nextLine();
+            }
+        }
+    }
+
+    public static String[][] anadir(String[][] arreglo, Scanner sc) {
+        String[][] temp = new String[arreglo.length + 1][2];
+        for (int i = 0; i < arreglo.length; i++) {
+            for (int j = 0; j < arreglo[i].length; j++) {
+                temp[i][j] = arreglo[i][j];
+            }
+        }
+        System.out.println("Dijite el valor " + (temp.length));
+        sc.nextLine();
+        temp[temp.length - 1][0] = sc.nextLine();
+        temp[temp.length - 1][1] = "0";
+        return temp;
     }
 }

@@ -7,7 +7,7 @@ public class App {
         int tamano1 = metodo1(sc);
         String[][] arreglo = new String[tamano1][2];
         String[][] arreglo2 = metodo2(arreglo, sc);
-        String[][] arreglo3 = metodo1(arreglo2, sc);
+        String[][] arreglo3 = metododsdsa(arreglo2, sc);
         metodo4();
         System.out.println("Su agenda es: ");
         metodo3(arreglo3);
@@ -69,7 +69,7 @@ public class App {
         return arreglo;
     }
 
-    public static String[][] metodo1(String[][] arreglo, Scanner sc) {
+    public static String[][] metododsdsa(String[][] arreglo, Scanner sc) {
         for (int i = 0; i < arreglo.length; i++) {
             for (int j = 1; j < 2; j++) {
                 arreglo[i][j] = "0";
@@ -210,3 +210,4 @@ public class App {
         return temp;
     }
 }
+
